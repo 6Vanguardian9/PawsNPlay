@@ -1,12 +1,16 @@
-FROM python:3.11
+FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY pyproject.toml uv.lock ./
-
 RUN pip install uv
-RUN uv pip install -r uv.lock
+ENV UV_SYSTEM_PYTHON=1
 
 COPY . .
 
-CMD ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "8000"]
+RUN uv pip install fastapi uvicorn
+
+EXPOSE 8000
+
+ENV PYTHONPATH=/app
+
+CMD ["uv", "run", "python", "app/app.py"]
