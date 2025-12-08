@@ -5,3 +5,8 @@ psycopg2-binary
 pydantic
 qdrant-client
 redis
+python-dotenv
+alembic 
+celery
+redis
+requests

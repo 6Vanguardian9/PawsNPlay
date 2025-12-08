@@ -102,3 +102,8 @@ class PetFullResponse(PetResponse):
 
     class Config:
         orm_mode = True
+
+
+class IngestBehaviorRequest(BaseModel):
+    pet_id: int
+    text: str
